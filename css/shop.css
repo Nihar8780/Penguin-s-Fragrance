@@ -1,0 +1,148 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — SHOP.CSS
+   Layout for shop.html specifically. The filter *component* styling
+   (filter-group, pagination, product grid) lives in products.css —
+   this file only handles shop-page-specific structure: the header row,
+   sidebar/grid split, sort control, and results count.
+   ========================================================================== */
+
+.shop-header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 32px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+@media (min-width: 768px) {
+  .shop-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.shop-header__count {
+  color: var(--on-surface-variant);
+  margin-top: 8px;
+}
+
+/* ---------- Sort control ---------- */
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .sort-control {
+    width: auto;
+  }
+}
+
+.sort-control label {
+  font-family: var(--font-body);
+  font-size: var(--fs-label-caps);
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  white-space: nowrap;
+}
+
+.sort-control select {
+  min-width: 200px;
+}
+
+/* ---------- Layout split ---------- */
+.shop-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-gutter);
+}
+
+@media (min-width: 992px) {
+  .shop-layout {
+    flex-direction: row;
+  }
+}
+
+.shop-sidebar {
+  flex-shrink: 0;
+  display: none; /* hidden on mobile — filters live in the offcanvas drawer */
+}
+
+@media (min-width: 992px) {
+  .shop-sidebar {
+    display: block;
+    width: 260px;
+    position: sticky;
+    top: 112px; /* below sticky header */
+    height: fit-content;
+  }
+}
+
+.shop-content {
+  flex-grow: 1;
+  min-width: 0; /* prevents grid overflow in flex children */
+}
+
+/* ---------- Mobile filter trigger row ---------- */
+.mobile-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 992px) {
+  .mobile-filter-bar {
+    display: none;
+  }
+}
+
+/* Mobile filter drawer reuses .offcanvas-brand from navbar.css, this
+   just adds body padding + apply button footer */
+.filter-drawer__body {
+  padding: 24px var(--margin-mobile) 0;
+}
+
+.filter-drawer__footer {
+  position: sticky;
+  bottom: 0;
+  background-color: var(--surface-container-lowest);
+  border-top: 1px solid var(--outline-variant);
+  padding: 16px var(--margin-mobile);
+  display: flex;
+  gap: 12px;
+}
+
+/* ---------- Active filter chips (shown above grid when filters applied) */
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.active-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--surface-container-high);
+  border-radius: var(--radius-full);
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--on-surface);
+}
+
+.active-filter-chip button {
+  display: inline-flex;
+  color: var(--on-surface-variant);
+}
+
+.active-filter-chip button:hover {
+  color: var(--on-surface);
+}

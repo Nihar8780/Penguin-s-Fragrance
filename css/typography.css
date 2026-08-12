@@ -1,0 +1,124 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — TYPOGRAPHY SYSTEM
+   Two type families only, per project rule:
+     - Playfair Display -> editorial / display / headings
+     - Manrope           -> UI / body / labels / buttons
+   Classes below mirror the Stitch "font-*" / "text-*" utility pairs so
+   Tailwind class names can be mapped 1:1 during conversion.
+   ========================================================================== */
+
+/* ---------- DISPLAY (hero statements) ---------- */
+.text-display-lg {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-lg);
+  font-weight: 400;
+  line-height: var(--lh-display-lg);
+  letter-spacing: var(--ls-display);
+}
+
+@media (max-width: 767.98px) {
+  .text-display-lg {
+    font-size: var(--fs-display-lg-mobile);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+}
+
+/* ---------- HEADLINES (editorial section/product titles) ---------- */
+.text-headline-md {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline-md);
+  font-weight: 400;
+  line-height: var(--lh-headline-md);
+}
+
+.text-headline-sm {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline-sm);
+  font-weight: 400;
+  line-height: var(--lh-headline-sm);
+}
+
+/* ---------- BODY (Manrope) ---------- */
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-lg);
+  font-weight: 400;
+  line-height: var(--lh-body);
+}
+
+.text-body-md {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  font-weight: 400;
+  line-height: var(--lh-body);
+}
+
+/* ---------- LABEL / OVERLINE (uppercase, tracked-out caps) ---------- */
+.text-label-caps {
+  font-family: var(--font-body);
+  font-size: var(--fs-label-caps);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+}
+
+/* ---------- BUTTON TEXT ---------- */
+.text-button {
+  font-family: var(--font-body);
+  font-size: var(--fs-button);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--ls-button);
+}
+
+/* ---------- Base heading element defaults ----------
+   So a raw <h1>-<h6> without a utility class still looks correct
+   inside semantic markup. */
+h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-lg-mobile);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--on-surface);
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: var(--fs-display-lg);
+    line-height: var(--lh-display-lg);
+    letter-spacing: var(--ls-display);
+  }
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline-md);
+  line-height: var(--lh-headline-md);
+  color: var(--on-surface);
+}
+
+h3, h4 {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline-sm);
+  line-height: var(--lh-headline-sm);
+  color: var(--on-surface);
+}
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  line-height: var(--lh-body);
+  color: var(--on-surface-variant);
+}
+
+/* ---------- Utility text colors (used across components) ---------- */
+.text-primary   { color: var(--on-surface) !important; }
+.text-secondary { color: var(--on-surface-variant) !important; }
+.text-muted-brand { color: var(--grey, var(--color-grey)) !important; }
+.text-white-brand { color: var(--color-white) !important; }
+
+/* ---------- Uppercase tracking utility (breadcrumbs, nav, overlines) --- */
+.tracking-wide  { letter-spacing: 0.1em; }
+.tracking-wider { letter-spacing: 0.2em; }

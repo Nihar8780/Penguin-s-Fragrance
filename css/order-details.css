@@ -1,0 +1,111 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — ORDER-DETAILS.CSS
+   Styling for order-details.html: status timeline + item list +
+   shipping/payment info blocks. Reuses .order-details-card /
+   .order-details-grid (order-success.css) and .checkout-summary-item
+   (checkout.css) rather than redefining them.
+   ========================================================================== */
+
+/* ---------- Status timeline ---------- */
+.order-timeline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+.order-timeline__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.order-timeline__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--outline-variant);
+  z-index: 0;
+}
+
+.order-timeline__step.complete:not(:last-child)::after {
+  background-color: var(--primary);
+}
+
+.order-timeline__dot {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--surface-container-lowest);
+  border: 2px solid var(--outline-variant);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface-variant);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 12px;
+}
+
+.order-timeline__step.complete .order-timeline__dot {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.order-timeline__label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+.order-timeline__step.complete .order-timeline__label {
+  color: var(--on-surface);
+  font-weight: 600;
+}
+
+/* ---------- Info block pair (shipping / payment side by side) ---------- */
+.order-info-blocks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--outline-variant);
+}
+
+@media (min-width: 576px) {
+  .order-info-blocks {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.order-info-block__label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  margin-bottom: 8px;
+}
+
+.order-info-block__value {
+  color: var(--on-surface-variant);
+  line-height: 1.7;
+}
+
+/* ---------- Not found / not yours state ---------- */
+.order-details-not-found {
+  text-align: center;
+  padding: 96px var(--margin-mobile);
+}

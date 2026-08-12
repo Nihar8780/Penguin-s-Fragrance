@@ -1,0 +1,346 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — STYLE.CSS
+   Base layout primitives and shared component classes used on every page:
+   containers, section spacing, buttons, borders, shadows, badges/chips,
+   form controls. Page-specific styling (navbar.css, products.css, etc.)
+   builds ON TOP of these, never duplicates them.
+   Load order: reset.css -> variables.css -> typography.css -> style.css
+   -> [bootstrap] -> component css -> responsive.css
+   ========================================================================== */
+
+/* ---------- GLOBAL CONTAINER ----------
+   Overrides Bootstrap's .container max-width so it matches the Stitch
+   1440px "gallery frame" with generous outer margins. */
+.container,
+.container-fluid.px-brand {
+  max-width: var(--container-max);
+  padding-left: var(--margin-mobile);
+  padding-right: var(--margin-mobile);
+}
+
+@media (min-width: 768px) {
+  .container,
+  .container-fluid.px-brand {
+    padding-left: var(--margin-desktop);
+    padding-right: var(--margin-desktop);
+  }
+}
+
+/* ---------- SECTION SPACING ----------
+   Aggressive vertical rhythm between major sections, per DESIGN.md
+   ("avoid the cluttered look of standard e-commerce"). */
+.section {
+  padding-top: var(--section-gap-mobile);
+  padding-bottom: var(--section-gap-mobile);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: var(--section-gap);
+    padding-bottom: var(--section-gap);
+  }
+}
+
+.section-tight {
+  padding-top: calc(var(--section-gap-mobile) / 2);
+  padding-bottom: calc(var(--section-gap-mobile) / 2);
+}
+
+/* ---------- SURFACES / BORDERS ---------- */
+.surface-card {
+  background-color: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--outline-variant);
+  opacity: 0.5;
+  margin: 0;
+}
+
+.shadow-ambient {
+  box-shadow: var(--shadow-ambient);
+}
+
+/* ---------- BUTTONS ----------
+   Bootstrap's .btn is used for structure (padding/focus/disabled states)
+   but repainted entirely to match the Stitch flat, sharp-edged luxury look. */
+.btn-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: var(--fs-button);
+  font-weight: 500;
+  letter-spacing: var(--ls-button);
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  padding: 16px 32px;
+  border: 1px solid transparent;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-brand-primary {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--primary);
+}
+
+.btn-brand-primary:hover,
+.btn-brand-primary:focus-visible {
+  background-color: var(--inverse-surface);
+  border-color: var(--inverse-surface);
+  color: var(--on-primary);
+}
+
+.btn-brand-secondary {
+  background-color: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-brand-secondary:hover,
+.btn-brand-secondary:focus-visible {
+  background-color: var(--surface-container-low);
+  color: var(--primary);
+}
+
+.btn-brand-ghost {
+  background-color: transparent;
+  color: var(--primary);
+  border-color: transparent;
+  border-bottom: 1px solid var(--primary);
+  border-radius: 0;
+  padding: 4px 0;
+}
+
+.btn-brand-ghost:hover,
+.btn-brand-ghost:focus-visible {
+  opacity: 0.7;
+}
+
+.btn-brand:disabled,
+.btn-brand.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Full-width variant (cart/checkout CTAs) */
+.btn-brand-block {
+  width: 100%;
+}
+
+/* Icon-only button (header icons, close buttons) */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  color: var(--primary);
+  transition: opacity var(--transition-fast), background-color var(--transition-fast);
+}
+
+.btn-icon:hover,
+.btn-icon:focus-visible {
+  opacity: 0.7;
+}
+
+/* ---------- BADGES / CHIPS (fragrance notes, sale tags) ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--surface-container-high);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.badge-brand {
+  display: inline-block;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.badge-sale {
+  background-color: var(--error);
+  color: var(--on-error);
+}
+
+/* ---------- FORM CONTROLS ----------
+   Minimal, bottom-border-only inputs matching DESIGN.md "Inputs" spec. */
+.form-control-brand,
+.form-select-brand {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--outline-variant);
+  border-radius: 0;
+  padding: 10px 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  color: var(--on-surface);
+  transition: border-color var(--transition-fast);
+}
+
+.form-control-brand::placeholder {
+  color: var(--on-surface-variant);
+  opacity: 0.6;
+}
+
+.form-control-brand:focus,
+.form-select-brand:focus {
+  outline: none;
+  border-bottom-color: var(--primary);
+}
+
+.form-label-brand {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--fs-label-caps);
+  font-weight: 600;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface);
+  margin-bottom: 8px;
+}
+
+.form-error-text {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--error);
+  margin-top: 6px;
+}
+
+/* Checkbox / radio (filters, forms) — recolored to brand */
+.form-check-input {
+  border-color: var(--outline-variant);
+  border-radius: 2px;
+}
+
+.form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 2px var(--surface-container-high);
+}
+
+/* ---------- SKELETON / LOADING STATE ---------- */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-container-low) 25%,
+    var(--surface-container-high) 37%,
+    var(--surface-container-low) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-loading {
+  0%   { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* ---------- EMPTY STATE ----------
+   Shared layout for "empty cart", "no results", "no orders", etc. */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 96px 24px;
+}
+
+.empty-state .material-symbols-outlined {
+  font-size: 48px;
+  color: var(--outline);
+  margin-bottom: 24px;
+}
+
+.empty-state h2 {
+  margin-bottom: 12px;
+}
+
+.empty-state p {
+  max-width: 420px;
+  margin-bottom: 32px;
+}
+
+/* ---------- QUANTITY STEPPER ----------
+   Shared by product-details.css (product page) and cart.css (cart page)
+   so the +/- quantity control looks identical everywhere. */
+.qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  height: 44px;
+  width: 128px;
+}
+
+.qty-stepper button {
+  width: 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface-variant);
+  font-size: 18px;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.qty-stepper button:hover {
+  background-color: var(--surface-container-low);
+  color: var(--on-surface);
+}
+
+.qty-stepper button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.qty-stepper span {
+  flex-grow: 1;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  color: var(--on-surface);
+}
+
+/* ---------- UTILITY HELPERS ---------- */
+.cursor-pointer { cursor: pointer; }
+.no-underline   { text-decoration: none; }
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.aspect-4-5 { aspect-ratio: 4 / 5; }
+.aspect-1-1 { aspect-ratio: 1 / 1; }
+.object-cover { object-fit: cover; }
+
+.bg-brand-surface       { background-color: var(--surface); }
+.bg-brand-surface-low   { background-color: var(--surface-container-low); }
+.bg-brand-surface-lowest{ background-color: var(--surface-container-lowest); }

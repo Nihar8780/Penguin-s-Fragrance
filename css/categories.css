@@ -1,0 +1,74 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — CATEGORIES.CSS
+   Styling for categories.html: large image cards for each fragrance
+   family, linking into shop.html?category=X (shop.html reads that
+   param on load and pre-applies the filter).
+   ========================================================================== */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-gutter);
+}
+
+@media (min-width: 576px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.category-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--surface-container-low);
+}
+
+@media (min-width: 576px) {
+  .category-card:nth-child(1),
+  .category-card:nth-child(4) {
+    grid-column: span 1;
+  }
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.category-card:hover img {
+  transform: scale(1.05);
+}
+
+.category-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(252, 249, 249, 0.55) 0%, rgba(238, 234, 234, 0) 55%);
+}
+
+.category-card__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 28px;
+  color: var(--color-white);
+}
+
+.category-card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline-md);
+  text-transform: capitalize;
+  margin-bottom: 6px;
+}
+
+.category-card__count {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  opacity: 0.9;
+}

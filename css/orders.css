@@ -1,0 +1,75 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — ORDERS.CSS
+   Styling for orders.html (full order history). The individual order
+   row reuses .order-preview-row / .order-status-badge from account.css
+   — this file only adds the status filter tabs and card wrapper.
+   ========================================================================== */
+
+.orders-card {
+  background-color: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 8px 32px;
+}
+
+.orders-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.orders-filter-tab {
+  padding: 8px 18px;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.orders-filter-tab:hover {
+  border-color: var(--primary);
+}
+
+.orders-filter-tab.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+/* Clickable order row (whole row navigates to order-details.html) */
+.order-preview-row--link {
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  margin: 0 -32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  border-radius: var(--radius-md);
+}
+
+.order-preview-row--link:hover {
+  background-color: var(--surface-container-low);
+}
+
+.order-preview-row__items-thumb-strip {
+  display: flex;
+  margin-right: 8px;
+}
+
+.order-preview-row__items-thumb-strip img {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 2px solid var(--surface-container-lowest);
+  margin-left: -12px;
+  background-color: var(--surface-container-low);
+}
+
+.order-preview-row__items-thumb-strip img:first-child {
+  margin-left: 0;
+}

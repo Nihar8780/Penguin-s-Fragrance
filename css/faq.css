@@ -1,0 +1,45 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — FAQ styling additions
+   The accordion itself reuses .accordion-brand-item / -trigger / -content
+   from product-details.css. This file only adds the category filter tabs.
+   NOTE: faq.html must link product-details.css for the accordion classes.
+   ========================================================================== */
+
+.faq-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.faq-tab {
+  padding: 10px 20px;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--fs-label-caps);
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.faq-tab:hover {
+  border-color: var(--primary);
+}
+
+.faq-tab.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-item[hidden] {
+  display: none;
+}

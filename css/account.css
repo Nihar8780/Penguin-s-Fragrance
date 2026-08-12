@@ -1,0 +1,157 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — ACCOUNT.CSS
+   Styling for account.html: sidebar nav + profile summary card + a
+   recent-orders preview list. Reuses .form-control-brand / .form-row /
+   .form-field from style.css + checkout.css for the profile edit form.
+   ========================================================================== */
+
+.account-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-gutter);
+}
+
+@media (min-width: 992px) {
+  .account-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+/* ---------- Sidebar ---------- */
+.account-sidebar {
+  width: 100%;
+  flex-shrink: 0;
+  background-color: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+@media (min-width: 992px) {
+  .account-sidebar {
+    width: 260px;
+    position: sticky;
+    top: 112px;
+  }
+}
+
+.account-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  color: var(--on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.account-sidebar__name {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  font-weight: 600;
+  color: var(--on-surface);
+}
+
+.account-sidebar__email {
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  margin-bottom: 24px;
+  word-break: break-word;
+}
+
+.account-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid var(--outline-variant);
+  padding-top: 16px;
+}
+
+.account-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  color: var(--on-surface-variant);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.account-nav__link:hover {
+  background-color: var(--surface-container-low);
+  color: var(--on-surface);
+}
+
+.account-nav__link.active {
+  background-color: var(--surface-container-low);
+  color: var(--on-surface);
+  font-weight: 600;
+}
+
+.account-nav__link.text-error {
+  color: var(--error);
+}
+
+/* ---------- Content ---------- */
+.account-content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.account-section {
+  background-color: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.account-section__title {
+  margin-bottom: 24px;
+}
+
+/* ---------- Order preview row ---------- */
+.order-preview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+.order-preview-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.order-preview-row__number {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--on-surface);
+}
+
+.order-preview-row__meta {
+  font-size: 13px;
+  color: var(--on-surface-variant);
+}
+
+.order-status-badge {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--surface-container-high);
+  color: var(--on-surface);
+}

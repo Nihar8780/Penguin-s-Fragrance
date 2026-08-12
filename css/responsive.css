@@ -1,0 +1,182 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — RESPONSIVE.CSS
+   Final responsive audit pass. Most components already carry their own
+   @media rules inline (navbar.css, products.css, checkout.css, etc.) —
+   this file only catches the remaining cross-cutting gaps: very small
+   phones (<400px), overflow safety nets, and a few elements that need
+   a genuinely different mobile layout rather than just reflow.
+   Load this LAST, after every other CSS file, so its overrides win.
+   ========================================================================== */
+
+/* ---------- Global overflow safety net ----------
+   Belt-and-braces on top of reset.css: long product names, emails, or
+   order numbers should never force horizontal scroll on narrow screens. */
+h1, h2, h3, p, span, a {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Very small phones (<400px) ---------- */
+@media (max-width: 399.98px) {
+  :root {
+    --margin-mobile: 16px;
+  }
+
+  .hero__title {
+    font-size: 32px;
+  }
+
+  .text-display-lg-mobile {
+    font-size: 32px !important;
+  }
+
+  .site-header__logo {
+    font-size: 18px;
+  }
+
+  .btn-brand {
+    padding: 14px 20px;
+    font-size: 12px;
+  }
+
+  .payment-method-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Checkout / payment step indicator ----------
+   Hide step labels below 480px so the dots + dividers don't wrap
+   awkwardly into two cramped lines; dots alone still communicate
+   progress clearly. */
+@media (max-width: 479.98px) {
+  .checkout-step {
+    font-size: 0;
+    gap: 0;
+  }
+
+  .checkout-step__dot {
+    font-size: 12px;
+  }
+
+  .checkout-step__divider {
+    width: 16px;
+  }
+}
+
+/* ---------- Order status timeline ----------
+   Switch from horizontal to vertical below 576px — a 4-step horizontal
+   timeline gets too cramped for labels like "Out for Delivery" on a
+   narrow phone screen. */
+@media (max-width: 575.98px) {
+  .order-timeline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .order-timeline__step {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .order-timeline__step:not(:last-child)::after {
+    display: none;
+  }
+
+  .order-timeline__dot {
+    margin-bottom: 0;
+  }
+}
+
+/* ---------- Footer newsletter form ----------
+   Stack the email input above the Join button on narrow phones rather
+   than compressing both into an unreadably thin row. */
+@media (max-width: 399.98px) {
+  .site-footer__newsletter {
+    flex-direction: column;
+  }
+
+  .site-footer__newsletter button {
+    width: 100%;
+  }
+}
+
+/* ---------- Coupon form (cart page) ---------- */
+@media (max-width: 399.98px) {
+  .coupon-form {
+    flex-direction: column;
+  }
+
+  .coupon-form button {
+    width: 100%;
+  }
+}
+
+/* ---------- Order summary sticky sidebar ----------
+   Sticky positioning fights with limited mobile viewport height once a
+   keyboard is open (e.g. typing a coupon code) — disable sticky below
+   the lg breakpoint so it behaves as normal in-flow content. */
+@media (max-width: 991.98px) {
+  .order-summary-card,
+  .account-sidebar,
+  .shop-sidebar {
+    position: static;
+    top: auto;
+  }
+}
+
+/* ---------- Product grid gap tightening on small phones ---------- */
+@media (max-width: 399.98px) {
+  .product-grid {
+    gap: 16px;
+    row-gap: 40px;
+  }
+}
+
+/* ---------- Table-like rows (order preview, cart item footer) ----------
+   Ensure price never gets squeezed off-screen next to a long product
+   name on narrow viewports. */
+@media (max-width: 399.98px) {
+  .cart-item__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-preview-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* ---------- Touch target minimum size ----------
+   Per accessibility rules: icon buttons should never fall below a
+   44x44 comfortable tap target on touch devices, even where the visual
+   icon itself is smaller. */
+@media (hover: none) and (pointer: coarse) {
+  .btn-icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .qty-stepper button {
+    min-width: 44px;
+  }
+}
+
+/* ---------- Large desktop (1440px+) ----------
+   Prevent hero/editorial imagery from feeling undersized on very wide
+   monitors beyond the 1440px design frame. */
+@media (min-width: 1600px) {
+  .hero {
+    max-height: 1040px;
+  }
+}

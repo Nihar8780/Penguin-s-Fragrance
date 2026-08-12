@@ -1,0 +1,157 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — FOOTER.CSS
+   Global footer used on every page. 4-column layout on desktop
+   (brand+copyright spans 2, then two link columns), stacked on mobile.
+   Matches the Stitch "surface-container-low" tonal background.
+   ========================================================================== */
+
+.site-footer {
+  background-color: var(--surface-container-low);
+  border-top: 1px solid var(--outline-variant);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-gutter);
+  padding-top: var(--section-gap-mobile);
+  padding-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .site-footer__grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding-top: var(--section-gap);
+    padding-bottom: 64px;
+  }
+}
+
+/* ---------- Brand column ---------- */
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.site-footer__logo {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--on-surface);
+}
+
+.site-footer__tagline {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  color: var(--on-surface-variant);
+  max-width: 320px;
+  line-height: var(--lh-body);
+}
+
+/* Newsletter signup (footer) */
+.site-footer__newsletter {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  max-width: 360px;
+}
+
+.site-footer__newsletter input {
+  flex: 1 1 auto;
+}
+
+/* ---------- Link columns ---------- */
+.site-footer__col-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-label-caps);
+  font-weight: 600;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.site-footer__link {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  color: var(--on-surface-variant);
+  transition: color var(--transition-fast);
+  width: fit-content;
+}
+
+.site-footer__link:hover,
+.site-footer__link:focus-visible {
+  color: var(--on-surface);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* ---------- Bottom bar ---------- */
+.site-footer__bottom {
+  border-top: 1px solid var(--outline-variant);
+  padding-top: 24px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .site-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.site-footer__copyright {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-footer__social a {
+  color: var(--on-surface-variant);
+  transition: color var(--transition-fast);
+}
+
+.site-footer__social a:hover,
+.site-footer__social a:focus-visible {
+  color: var(--on-surface);
+}
+
+/* ---------- Payment method icons strip (optional, checkout trust) ------ */
+.site-footer__payments {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.site-footer__payments span {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--on-surface-variant);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+}

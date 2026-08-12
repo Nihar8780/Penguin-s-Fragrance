@@ -1,0 +1,90 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — NOTIFICATIONS.CSS
+   Toast container + variants. Toasts are generated dynamically by
+   js/notifications.js — this file only styles them.
+   ========================================================================== */
+
+.toast-stack {
+  position: fixed;
+  top: 96px; /* sits just below the sticky header */
+  right: var(--margin-mobile);
+  left: var(--margin-mobile);
+  z-index: 1080;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .toast-stack {
+    left: auto;
+    right: var(--margin-desktop);
+    width: 360px;
+  }
+}
+
+.toast-brand {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+  background-color: var(--inverse-surface);
+  color: var(--inverse-on-surface);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-ambient);
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.toast-brand.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-brand__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.toast-brand__icon .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.toast-brand--success .toast-brand__icon {
+  color: #6fcf97;
+}
+
+.toast-brand--error {
+  background-color: var(--error);
+  color: var(--on-error);
+}
+
+.toast-brand--error .toast-brand__icon {
+  color: var(--on-error);
+}
+
+.toast-brand__message {
+  flex: 1 1 auto;
+  line-height: 1.4;
+}
+
+.toast-brand__close {
+  flex-shrink: 0;
+  display: inline-flex;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.toast-brand__close:hover {
+  opacity: 1;
+}

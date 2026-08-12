@@ -1,0 +1,269 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — PRODUCT-DETAILS.CSS
+   Styling for product.html: image gallery + thumbnails, accordion
+   sections (Scent / Notes / Ingredients / Shipping), size selector,
+   and the related products strip at the bottom.
+   ========================================================================== */
+
+/* ---------- Gallery ---------- */
+.pdp-gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .pdp-gallery {
+    flex-direction: row;
+  }
+}
+
+.pdp-gallery__thumbs {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .pdp-gallery__thumbs {
+    flex-direction: column;
+    overflow-y: auto;
+    width: 96px;
+  }
+}
+
+.pdp-gallery__thumb {
+  width: 80px;
+  height: 96px;
+  flex-shrink: 0;
+  border: 1px solid var(--outline-variant);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .pdp-gallery__thumb {
+    width: 100%;
+    height: 128px;
+  }
+}
+
+.pdp-gallery__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  transition: opacity var(--transition-fast);
+}
+
+.pdp-gallery__thumb:hover img {
+  opacity: 1;
+}
+
+.pdp-gallery__thumb.active {
+  border-color: var(--primary);
+}
+
+.pdp-gallery__thumb.active img {
+  opacity: 1;
+}
+
+.pdp-gallery__main {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: var(--surface-container-low);
+  overflow: hidden;
+}
+
+.pdp-gallery__main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--transition-base);
+}
+
+/* ---------- Product info column ---------- */
+.pdp-brand-label {
+  color: var(--on-surface-variant);
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+}
+
+.pdp-title {
+  margin-bottom: 16px;
+}
+
+.pdp-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.pdp-price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.pdp-price__original {
+  color: var(--on-surface-variant);
+  text-decoration: line-through;
+  font-size: var(--fs-body-md);
+}
+
+.pdp-stock-note {
+  font-size: 13px;
+  color: var(--on-surface-variant);
+}
+
+.pdp-stock-note.low-stock {
+  color: var(--error);
+}
+
+/* ---------- Size selector ---------- */
+.size-option-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.size-option {
+  border: 1px solid var(--outline-variant);
+  padding: 12px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: var(--fs-button);
+  letter-spacing: var(--ls-button);
+  color: var(--on-surface);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.size-option:hover {
+  border-color: var(--primary);
+}
+
+.size-option.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+/* ---------- Quantity + wishlist row ---------- */
+.pdp-qty-wishlist-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pdp-wishlist-toggle {
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.pdp-wishlist-toggle.is-active {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.pdp-wishlist-toggle.is-active .material-symbols-outlined {
+  font-variation-settings: "FILL" 1;
+}
+
+/* ---------- Accordions ---------- */
+.accordion-brand-item {
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+.accordion-brand-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-label-caps);
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface);
+}
+
+.accordion-brand-trigger .material-symbols-outlined {
+  color: var(--on-surface-variant);
+  transition: transform var(--transition-base);
+}
+
+.accordion-brand-trigger[aria-expanded="true"] .material-symbols-outlined {
+  transform: rotate(180deg);
+}
+
+.accordion-brand-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-base), opacity var(--transition-base);
+}
+
+.accordion-brand-content.open {
+  max-height: 600px;
+  opacity: 1;
+}
+
+.accordion-brand-content__inner {
+  padding-bottom: 24px;
+  color: var(--on-surface-variant);
+  line-height: var(--lh-body);
+}
+
+/* Fragrance notes layout inside accordion */
+.notes-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.notes-row:last-child {
+  margin-bottom: 0;
+}
+
+.notes-row__label {
+  width: 96px;
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-label-caps);
+  font-weight: 600;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface);
+}
+
+/* ---------- Related products ---------- */
+.related-products-section {
+  margin-top: var(--section-gap-mobile);
+  padding-top: 64px;
+  border-top: 1px solid var(--outline-variant);
+}
+
+@media (min-width: 768px) {
+  .related-products-section {
+    margin-top: var(--section-gap);
+  }
+}
+
+/* ---------- Product not found state ---------- */
+.pdp-not-found {
+  text-align: center;
+  padding: 120px var(--margin-mobile);
+}

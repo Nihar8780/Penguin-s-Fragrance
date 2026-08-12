@@ -1,0 +1,214 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — NAVBAR.CSS
+   Sticky global header. Desktop: left nav links / centered wordmark /
+   right icon cluster. Mobile: hamburger -> Bootstrap offcanvas menu.
+   Starts transparent over the hero, becomes solid white on scroll
+   (see js/navigation.js for the ".header-scrolled" toggle).
+   ========================================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030; /* above Bootstrap's default navbar (1030) baseline */
+  width: 100%;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+/* Solid state — toggled via JS once user scrolls past hero,
+   and applied by default on non-hero (inner) pages. */
+.site-header.header-scrolled,
+.site-header.header-solid {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--outline-variant);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  position: relative;
+}
+
+/* ---------- Wordmark ---------- */
+.site-header__logo {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline-md);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--on-surface);
+  white-space: nowrap;
+}
+
+/* Desktop: logo centered absolutely between nav and icons */
+@media (min-width: 992px) {
+  .site-header__logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Header text always readable over a dark hero image */
+.site-header.header-on-hero .site-header__logo,
+.site-header.header-on-hero .site-header__link,
+.site-header.header-on-hero .btn-icon {
+  color: var(--color-white);
+}
+
+/* ---------- Desktop nav links ---------- */
+.site-header__nav {
+  display: none;
+  align-items: center;
+  gap: 32px;
+}
+
+@media (min-width: 992px) {
+  .site-header__nav {
+    display: flex;
+  }
+}
+
+.site-header__link {
+  font-family: var(--font-body);
+  font-size: var(--fs-label-caps);
+  font-weight: 600;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.site-header__link:hover,
+.site-header__link:focus-visible {
+  color: var(--on-surface);
+}
+
+.site-header__link.active {
+  color: var(--on-surface);
+  border-bottom-color: var(--on-surface);
+  opacity: 0.85;
+}
+
+/* ---------- Icon cluster (search / account / wishlist / cart) ---------- */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-header__action-hide-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .site-header__action-hide-mobile {
+    display: inline-flex;
+  }
+}
+
+/* Cart / wishlist item counter */
+.icon-badge {
+  position: relative;
+}
+
+.icon-badge__count {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  color: var(--on-primary);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+}
+
+/* ---------- Mobile hamburger trigger ---------- */
+.site-header__hamburger {
+  display: inline-flex;
+}
+
+@media (min-width: 992px) {
+  .site-header__hamburger {
+    display: none;
+  }
+}
+
+/* ---------- Mobile offcanvas menu ---------- */
+.offcanvas-brand {
+  width: min(320px, 85vw);
+  background-color: var(--surface-container-lowest);
+}
+
+.offcanvas-brand .offcanvas-header {
+  border-bottom: 1px solid var(--outline-variant);
+  padding: 20px var(--margin-mobile);
+}
+
+.offcanvas-brand .offcanvas-body {
+  padding: 0;
+}
+
+.offcanvas-brand__link {
+  display: block;
+  padding: 18px var(--margin-mobile);
+  border-bottom: 1px solid var(--outline-variant);
+  font-family: var(--font-body);
+  font-size: var(--fs-body-lg);
+  color: var(--on-surface);
+}
+
+.offcanvas-brand__link:hover,
+.offcanvas-brand__link:focus-visible {
+  background-color: var(--surface-container-low);
+}
+
+.offcanvas-brand__link.active {
+  font-weight: 600;
+}
+
+.offcanvas-brand__section-title {
+  padding: 16px var(--margin-mobile) 8px;
+  font-family: var(--font-body);
+  font-size: var(--fs-label-caps);
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+/* ---------- Breadcrumb (used directly under header on inner pages) ---- */
+.breadcrumb-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: var(--fs-label-caps);
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+.breadcrumb-brand a {
+  color: var(--on-surface-variant);
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb-brand a:hover {
+  color: var(--on-surface);
+}
+
+.breadcrumb-brand .current {
+  color: var(--on-surface);
+}

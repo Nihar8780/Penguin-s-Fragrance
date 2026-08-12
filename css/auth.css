@@ -1,0 +1,77 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — AUTH.CSS
+   Styling for login.html and register.html: a centered narrow card.
+   Form fields reuse .form-control-brand / .form-label-brand / .form-row
+   / .form-field from style.css + checkout.css.
+   ========================================================================== */
+
+.auth-wrapper {
+  min-height: calc(100vh - 80px - 120px); /* viewport minus header/footer approx */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+}
+
+.auth-card__header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.auth-card__title {
+  margin-bottom: 8px;
+}
+
+.auth-card__subtitle {
+  color: var(--on-surface-variant);
+}
+
+.auth-card__footer {
+  text-align: center;
+  margin-top: 24px;
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  color: var(--on-surface-variant);
+}
+
+.auth-card__footer a {
+  color: var(--on-surface);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  color: var(--on-surface-variant);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label-caps);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--outline-variant);
+}
+
+.auth-demo-notice {
+  font-size: 12px;
+  color: var(--on-surface-variant);
+  text-align: center;
+  margin-top: 20px;
+}

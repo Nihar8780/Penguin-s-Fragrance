@@ -1,0 +1,112 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — ORDER-SUCCESS.CSS
+   Styling for order-success.html: confirmation hero with success icon,
+   order details card (order number/date/payment/delivery), and the
+   itemized order list. Reuses .checkout-summary-item from checkout.css
+   for the line items.
+   ========================================================================== */
+
+.order-success-hero {
+  text-align: center;
+  padding: 48px 0 56px;
+}
+
+.order-success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  background-color: var(--surface-container-low);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.order-success-icon .material-symbols-outlined {
+  font-size: 40px;
+  color: var(--success);
+}
+
+.order-success-hero__title {
+  margin-bottom: 12px;
+}
+
+.order-success-hero__subtitle {
+  color: var(--on-surface-variant);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ---------- Order details card ---------- */
+.order-details-card {
+  background-color: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+.order-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+@media (min-width: 576px) {
+  .order-details-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.order-details-field__label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  margin-bottom: 6px;
+}
+
+.order-details-field__value {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  color: var(--on-surface);
+  font-weight: 600;
+}
+
+/* ---------- Items list ---------- */
+.order-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* ---------- Shipping address block ---------- */
+.order-shipping-block {
+  border-top: 1px solid var(--outline-variant);
+  padding-top: 24px;
+}
+
+.order-shipping-block p {
+  color: var(--on-surface-variant);
+  line-height: 1.7;
+}
+
+/* ---------- Action buttons ---------- */
+.order-success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+  .order-success-actions {
+    flex-direction: row;
+  }
+}

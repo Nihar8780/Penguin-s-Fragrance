@@ -1,0 +1,78 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — OFFERS.CSS
+   Styling for offers.html: coupon code cards. The discounted-products
+   grid below reuses .product-grid / .product-card from products.css.
+   ========================================================================== */
+
+.coupon-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-gutter);
+  margin-bottom: var(--section-gap-mobile);
+}
+
+@media (min-width: 768px) {
+  .coupon-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.coupon-card {
+  position: relative;
+  border: 1px dashed var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  background-color: var(--surface-container-lowest);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.coupon-card__code-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.coupon-card__code {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 0.05em;
+  color: var(--on-surface);
+}
+
+.coupon-card__copy-btn {
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: var(--ls-label-caps);
+  text-transform: uppercase;
+  color: var(--on-surface);
+  transition: background-color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.coupon-card__copy-btn:hover {
+  background-color: var(--surface-container-low);
+}
+
+.coupon-card__copy-btn.copied {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.coupon-card__desc {
+  color: var(--on-surface-variant);
+}
+
+.coupon-card__terms {
+  font-size: 12px;
+  color: var(--on-surface-variant);
+  opacity: 0.8;
+}

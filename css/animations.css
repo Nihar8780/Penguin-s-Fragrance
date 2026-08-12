@@ -1,0 +1,99 @@
+/* ==========================================================================
+   PENGUIN'S FRAGRANCE — ANIMATIONS.CSS
+   Reusable entrance/transition effects. Kept subtle, fast (200–600ms),
+   and purposeful per project rules — no bouncing, no spinning, no
+   parallax. Most hover/toggle transitions (buttons, accordions, cards)
+   already live inline in their component files; this file covers:
+     - Page-load fade-in
+     - Scroll-triggered reveal (paired with js/animations.js)
+     - Staggered list/grid entrance
+     - Image reveal on load
+   Respects prefers-reduced-motion throughout.
+   ========================================================================== */
+
+/* ---------- Keyframes ---------- */
+@keyframes pf-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pf-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pf-fade-down {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pf-scale-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pf-image-reveal {
+  from { opacity: 0; transform: scale(1.03); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- Page load ---------- */
+.pf-page-enter {
+  animation: pf-fade-in 0.4s ease both;
+}
+
+main {
+  animation: pf-fade-in 0.35s ease both;
+}
+
+/* ---------- Scroll reveal ----------
+   Usage: add data-reveal to any element. js/animations.js observes it
+   via IntersectionObserver and adds .is-visible when it enters the
+   viewport. Starts pre-hidden only once JS confirms it's ready
+   (.js-reveal-ready on <html>), so content never gets stuck invisible
+   if JS fails to load. */
+html.js-reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+html.js-reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children of a [data-reveal-group] — each direct child gets an
+   incrementally longer transition-delay, set inline by animations.js
+   via the --pf-stagger-index custom property. */
+html.js-reveal-ready [data-reveal-group] > [data-reveal] {
+  transition-delay: calc(var(--pf-stagger-index, 0) * 80ms);
+}
+
+/* ---------- Utility entrance classes (manual use, no JS needed) ---------- */
+.pf-fade-in    { animation: pf-fade-in 0.4s ease both; }
+.pf-fade-up    { animation: pf-fade-up 0.45s ease both; }
+.pf-fade-down  { animation: pf-fade-down 0.4s ease both; }
+.pf-scale-in   { animation: pf-scale-in 0.3s ease both; }
+
+/* ---------- Image reveal (product images, gallery main image) ---------- */
+.pf-image-reveal img {
+  animation: pf-image-reveal 0.5s ease both;
+}
+
+/* ---------- Reduced motion ----------
+   Users who've asked their OS for reduced motion get instant state
+   changes instead of animated ones, site-wide. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html.js-reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
