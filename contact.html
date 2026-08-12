@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Penguin's Fragrance</title>
+  <meta name="description" content="Get in touch with Penguin's Fragrance — customer service, store info, and support." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/checkout.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header header-solid" id="siteHeader">
+    <div class="container">
+      <div class="site-header__inner">
+        <button class="btn-icon site-header__hamburger" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Open menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <nav class="site-header__nav" aria-label="Primary">
+          <a class="site-header__link" href="shop.html">Shop</a>
+          <a class="site-header__link" href="categories.html">Collections</a>
+          <a class="site-header__link" href="about.html">About</a>
+          <a class="site-header__link active" href="contact.html">Contact</a>
+        </nav>
+        <a class="site-header__logo" href="index.html">Penguin's Fragrance</a>
+        <div class="site-header__actions">
+          <button class="btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchOverlay" aria-controls="searchOverlay" aria-label="Search">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+          <a class="btn-icon site-header__action-hide-mobile" href="login.html" aria-label="Account">
+            <span class="material-symbols-outlined">person</span>
+          </a>
+          <a class="btn-icon site-header__action-hide-mobile icon-badge" href="wishlist.html" aria-label="Wishlist">
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="icon-badge__count" id="wishlistCount" hidden>0</span>
+          </a>
+          <a class="btn-icon icon-badge" href="cart.html" aria-label="Shopping bag">
+            <span class="material-symbols-outlined">shopping_bag</span>
+            <span class="icon-badge__count" id="cartCount" hidden>0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="offcanvas offcanvas-start offcanvas-brand" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas-header">
+      <span class="site-header__logo" style="font-size: var(--fs-headline-sm);" id="mobileMenuLabel">Penguin's Fragrance</span>
+      <button type="button" class="btn-icon" data-bs-dismiss="offcanvas" aria-label="Close menu">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <a class="offcanvas-brand__link" href="shop.html">Shop</a>
+      <a class="offcanvas-brand__link" href="categories.html">Collections</a>
+      <a class="offcanvas-brand__link" href="about.html">About</a>
+      <a class="offcanvas-brand__link active" href="contact.html">Contact</a>
+      <p class="offcanvas-brand__section-title">Account</p>
+      <a class="offcanvas-brand__link" href="login.html">Sign In</a>
+      <a class="offcanvas-brand__link" href="wishlist.html">Wishlist</a>
+      <a class="offcanvas-brand__link" href="orders.html">Track Order</a>
+      <p class="offcanvas-brand__section-title">Support</p>
+      <a class="offcanvas-brand__link" href="contact.html">Contact Us</a>
+      <a class="offcanvas-brand__link" href="faq.html">FAQ</a>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-top offcanvas-brand" tabindex="-1" id="searchOverlay" aria-labelledby="searchOverlayLabel" style="width: 100%; height: auto;">
+    <div class="offcanvas-body">
+      <div class="container py-4">
+        <div class="d-flex align-items-center gap-3">
+          <span class="material-symbols-outlined text-primary">search</span>
+          <input type="search" class="form-control-brand" id="globalSearchInput" placeholder="Search fragrances, notes, collections…" aria-label="Search products" />
+          <button type="button" class="btn-icon" data-bs-dismiss="offcanvas" aria-label="Close search">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div id="searchSuggestions" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container section-tight">
+
+    <nav aria-label="Breadcrumb" class="breadcrumb-brand mb-5">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span class="current">Contact</span>
+    </nav>
+
+    <div class="text-center mb-5" style="max-width:560px; margin-left:auto; margin-right:auto;">
+      <h1 class="text-display-lg-mobile mb-3" style="text-transform:uppercase;">Get in Touch</h1>
+      <p class="text-secondary">Questions about an order, a fragrance, or a partnership? We'd love to hear from you.</p>
+    </div>
+
+    <div class="contact-layout">
+
+      <!-- ==================== FORM ==================== -->
+      <div>
+        <div class="contact-success-banner" id="contactSuccessBanner" hidden>
+          <span class="material-symbols-outlined">check_circle</span>
+          <span class="text-body-md">Thanks for reaching out — we'll reply within 1–2 business days.</span>
+        </div>
+
+        <form id="contactForm" novalidate>
+          <div class="form-row form-row--2col">
+            <div class="form-field">
+              <label class="form-label-brand" for="contactName">Full Name</label>
+              <input type="text" id="contactName" class="form-control-brand" required />
+            </div>
+            <div class="form-field">
+              <label class="form-label-brand" for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" class="form-control-brand" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label-brand" for="contactSubject">Subject</label>
+              <select id="contactSubject" class="form-select-brand" required>
+                <option value="">Select a topic</option>
+                <option value="order">Order Support</option>
+                <option value="product">Product Question</option>
+                <option value="wholesale">Wholesale / Stockist Inquiry</option>
+                <option value="press">Press</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label-brand" for="contactMessage">Message</label>
+              <textarea id="contactMessage" class="form-control-brand" rows="5" required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-brand btn-brand-primary">Send Message</button>
+        </form>
+      </div>
+
+      <!-- ==================== INFO CARD ==================== -->
+      <div class="contact-info-card">
+        <div class="contact-info-item">
+          <span class="material-symbols-outlined">location_on</span>
+          <div>
+            <p class="contact-info-item__label">Outlet</p>
+            <p class="contact-info-item__value">Penguin's Fragrance, 42 Ateliers Lane, Bandra West<br />Mumbai, Maharashtra 400050</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <span class="material-symbols-outlined">call</span>
+          <div>
+            <p class="contact-info-item__label">Phone</p>
+            <p class="contact-info-item__value">+91 87804 22359</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <span class="material-symbols-outlined">mail</span>
+          <div>
+            <p class="contact-info-item__label">Email</p>
+            <p class="contact-info-item__value">penguinsfragrance@gmail.com</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <span class="material-symbols-outlined">schedule</span>
+          <div>
+            <p class="contact-info-item__label">Outlet Hours</p>
+            <p class="contact-info-item__value">Mon–Sat, 10:00 AM – 7:00 PM IST</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="index.html">Penguin's Fragrance</a>
+          <p class="site-footer__tagline">Elevating the everyday through minimal, architectural scent compositions.</p>
+          <form class="site-footer__newsletter" id="newsletterForm" novalidate>
+            <label for="newsletterEmail" class="visually-hidden">Email address</label>
+            <input type="email" id="newsletterEmail" class="form-control-brand" placeholder="Your email address" required />
+            <button type="submit" class="btn-brand btn-brand-primary">Join</button>
+          </form>
+        </div>
+        <div>
+          <span class="site-footer__col-title">Shop</span>
+          <nav class="site-footer__links" aria-label="Shop">
+            <a class="site-footer__link" href="shop.html">All Fragrances</a>
+            <a class="site-footer__link" href="categories.html">Collections</a>
+            <a class="site-footer__link" href="offers.html">Offers</a>
+            <a class="site-footer__link" href="shop.html?size=30ml">Travel Sizes</a>
+          </nav>
+        </div>
+        <div>
+          <span class="site-footer__col-title">Service</span>
+          <nav class="site-footer__links" aria-label="Service">
+            <a class="site-footer__link" href="contact.html">Contact Us</a>
+            <a class="site-footer__link" href="faq.html">Shipping &amp; Returns</a>
+            <a class="site-footer__link" href="faq.html">FAQ</a>
+            <a class="site-footer__link" href="orders.html">Track Order</a>
+          </nav>
+        </div>
+        <div>
+          <span class="site-footer__col-title">Brand</span>
+          <nav class="site-footer__links" aria-label="Brand">
+            <a class="site-footer__link" href="about.html">Our Story</a>
+            <a class="site-footer__link" href="about.html#ingredients">Ingredients</a>
+            <a class="site-footer__link" href="about.html#sustainability">Sustainability</a>
+            <a class="site-footer__link" href="contact.html">Stockists</a>
+          </nav>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">© <span id="footerYear">2025</span> Penguin's Fragrance. All rights reserved.</p>
+        
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- ==================== CONTACT FORM LOGIC ====================
+       Demo-only: no backend endpoint exists yet, so this validates,
+       shows a success state, and resets the form. Kept inline since
+       it's a single small handler specific to this one page. -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contactForm");
+      const banner = document.getElementById("contactSuccessBanner");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const requiredFields = form.querySelectorAll("[required]");
+        let isValid = true;
+
+        requiredFields.forEach((field) => {
+          const wrapper = field.closest(".form-field");
+          const existingError = wrapper.querySelector(".form-error-text");
+          if (existingError) existingError.remove();
+          wrapper.classList.remove("has-error");
+
+          if (!field.value.trim()) {
+            wrapper.classList.add("has-error");
+            const errorEl = document.createElement("span");
+            errorEl.className = "form-error-text";
+            errorEl.textContent = "This field is required.";
+            wrapper.appendChild(errorEl);
+            isValid = false;
+          }
+        });
+
+        if (!isValid) {
+          showToast("Please fill in all required fields.", "error");
+          return;
+        }
+
+        banner.hidden = false;
+        showToast("Message sent successfully", "success");
+        form.reset();
+        banner.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    });
+  </script>
+
+</body>
+</html>

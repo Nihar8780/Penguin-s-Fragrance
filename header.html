@@ -1,0 +1,116 @@
+<!--
+  ==========================================================================
+  PENGUIN'S FRAGRANCE — HEADER PARTIAL
+  ==========================================================================
+  This is a static-site "partial": there's no server-side includes, so
+  paste this exact block right after <body> on every page.
+
+  TO ACTIVATE THE CURRENT PAGE LINK:
+    Add class="site-header__link active" (desktop) and
+    class="offcanvas-brand__link active" (mobile) to the matching <a>.
+
+  ON THE HOMEPAGE ONLY (transparent-over-hero header):
+    Add extra class "header-on-hero" to <header id="siteHeader">.
+    On every other (inner) page, add class "header-solid" instead so the
+    header is always readable against a white page background.
+
+  Requires: js/navigation.js (mobile offcanvas + scroll state +
+  cart/wishlist counter sync), Bootstrap 5 JS bundle, Material Symbols font.
+  ==========================================================================
+-->
+
+<header class="site-header header-solid" id="siteHeader">
+  <div class="container">
+    <div class="site-header__inner">
+
+      <!-- Mobile hamburger (opens offcanvas) -->
+      <button
+        class="btn-icon site-header__hamburger"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#mobileMenu"
+        aria-controls="mobileMenu"
+        aria-label="Open menu"
+      >
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+
+      <!-- Desktop nav (left) -->
+      <nav class="site-header__nav" aria-label="Primary">
+        <a class="site-header__link active" href="shop.html">Shop</a>
+        <a class="site-header__link" href="categories.html">Collections</a>
+        <a class="site-header__link" href="about.html">About</a>
+        <a class="site-header__link" href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Wordmark (center on desktop, center on mobile too) -->
+      <a class="site-header__logo" href="index.html">Penguin's Fragrance</a>
+
+      <!-- Icon actions (right) -->
+      <div class="site-header__actions">
+        <button class="btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchOverlay" aria-controls="searchOverlay" aria-label="Search">
+          <span class="material-symbols-outlined">search</span>
+        </button>
+        <a class="btn-icon site-header__action-hide-mobile" href="login.html" aria-label="Account">
+          <span class="material-symbols-outlined">person</span>
+        </a>
+        <a class="btn-icon site-header__action-hide-mobile icon-badge" href="wishlist.html" aria-label="Wishlist" id="wishlistIconDesktop">
+          <span class="material-symbols-outlined">favorite</span>
+          <span class="icon-badge__count" id="wishlistCount" hidden>0</span>
+        </a>
+        <a class="btn-icon icon-badge" href="cart.html" aria-label="Shopping bag" id="cartIcon">
+          <span class="material-symbols-outlined">shopping_bag</span>
+          <span class="icon-badge__count" id="cartCount" hidden>0</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE OFFCANVAS MENU ============ -->
+<div class="offcanvas offcanvas-start offcanvas-brand" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+  <div class="offcanvas-header">
+    <span class="site-header__logo" style="font-size: var(--fs-headline-sm);" id="mobileMenuLabel">Penguin's Fragrance</span>
+    <button type="button" class="btn-icon" data-bs-dismiss="offcanvas" aria-label="Close menu">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <a class="offcanvas-brand__link active" href="shop.html">Shop</a>
+    <a class="offcanvas-brand__link" href="categories.html">Collections</a>
+    <a class="offcanvas-brand__link" href="about.html">About</a>
+    <a class="offcanvas-brand__link" href="contact.html">Contact</a>
+
+    <p class="offcanvas-brand__section-title">Account</p>
+    <a class="offcanvas-brand__link" href="login.html">Sign In</a>
+    <a class="offcanvas-brand__link" href="wishlist.html">Wishlist</a>
+    <a class="offcanvas-brand__link" href="orders.html">Track Order</a>
+
+    <p class="offcanvas-brand__section-title">Support</p>
+    <a class="offcanvas-brand__link" href="contact.html">Contact Us</a>
+    <a class="offcanvas-brand__link" href="faq.html">FAQ</a>
+  </div>
+</div>
+
+<!-- ============ SEARCH OFFCANVAS (top-mounted) ============ -->
+<div class="offcanvas offcanvas-top offcanvas-brand" tabindex="-1" id="searchOverlay" aria-labelledby="searchOverlayLabel" style="width: 100%; height: auto;">
+  <div class="offcanvas-body">
+    <div class="container py-4">
+      <div class="d-flex align-items-center gap-3">
+        <span class="material-symbols-outlined text-primary">search</span>
+        <input
+          type="search"
+          class="form-control-brand"
+          id="globalSearchInput"
+          placeholder="Search fragrances, notes, collections…"
+          aria-label="Search products"
+        />
+        <button type="button" class="btn-icon" data-bs-dismiss="offcanvas" aria-label="Close search">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div id="searchSuggestions" class="mt-3"></div>
+    </div>
+  </div>
+</div>

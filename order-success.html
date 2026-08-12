@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed | Penguin's Fragrance</title>
+  <meta name="description" content="Your Penguin's Fragrance order has been confirmed." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/checkout.css" />
+  <link rel="stylesheet" href="css/order-success.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+</head>
+<body>
+
+  <!-- ==================== HEADER (stripped down, matches checkout/payment) ==================== -->
+  <header class="site-header header-solid" id="siteHeader">
+    <div class="container">
+      <div class="site-header__inner">
+        <a class="site-header__logo mx-auto" href="index.html" style="position:static; transform:none;">Penguin's Fragrance</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section-tight" style="max-width: 760px;">
+
+    <!-- ==================== STEP INDICATOR ==================== -->
+    <div class="checkout-steps">
+      <div class="checkout-step complete"><span class="checkout-step__dot"><span class="material-symbols-outlined" style="font-size:14px;">check</span></span> Cart</div>
+      <div class="checkout-step__divider"></div>
+      <div class="checkout-step complete"><span class="checkout-step__dot"><span class="material-symbols-outlined" style="font-size:14px;">check</span></span> Checkout</div>
+      <div class="checkout-step__divider"></div>
+      <div class="checkout-step complete"><span class="checkout-step__dot"><span class="material-symbols-outlined" style="font-size:14px;">check</span></span> Payment</div>
+      <div class="checkout-step__divider"></div>
+      <div class="checkout-step active"><span class="checkout-step__dot"><span class="material-symbols-outlined" style="font-size:14px;">check</span></span> Confirmation</div>
+    </div>
+
+    <!-- ==================== NO ORDER FOUND (direct access guard) ==================== -->
+    <div class="empty-state" id="noOrderNotice" hidden>
+      <span class="material-symbols-outlined">receipt_long</span>
+      <h2>No recent order found</h2>
+      <p>We couldn't find an order to display. If you just completed checkout, please try again.</p>
+      <a href="shop.html" class="btn-brand btn-brand-primary">Continue Shopping</a>
+    </div>
+
+    <div id="orderSuccessContent" hidden>
+
+      <!-- ==================== SUCCESS HERO ==================== -->
+      <div class="order-success-hero">
+        <div class="order-success-icon">
+          <span class="material-symbols-outlined">check_circle</span>
+        </div>
+        <h1 class="text-headline-md order-success-hero__title">Order Confirmed</h1>
+        <p class="order-success-hero__subtitle">
+          Thank you for your order. A confirmation email has been sent to <strong id="orderConfirmEmail"></strong>.
+        </p>
+      </div>
+
+      <!-- ==================== ORDER DETAILS ==================== -->
+      <div class="order-details-card">
+        <div class="order-details-grid">
+          <div>
+            <p class="order-details-field__label">Order Number</p>
+            <p class="order-details-field__value" id="orderNumber">—</p>
+          </div>
+          <div>
+            <p class="order-details-field__label">Order Date</p>
+            <p class="order-details-field__value" id="orderDate">—</p>
+          </div>
+          <div>
+            <p class="order-details-field__label">Payment Method</p>
+            <p class="order-details-field__value" id="orderPaymentMethod">—</p>
+          </div>
+          <div>
+            <p class="order-details-field__label">Estimated Delivery</p>
+            <p class="order-details-field__value" id="orderDelivery">—</p>
+          </div>
+        </div>
+
+        <div class="order-items-list" id="orderItemsList"></div>
+
+        <div class="order-summary-row">
+          <span>Subtotal</span>
+          <span id="orderSubtotal">₹0</span>
+        </div>
+        <div class="order-summary-row order-summary-row--discount" id="orderDiscountRow" hidden>
+          <span>Discount</span>
+          <span id="orderDiscount">₹0</span>
+        </div>
+        <div class="order-summary-row">
+          <span>Shipping</span>
+          <span id="orderShipping">Free</span>
+        </div>
+        <div class="order-summary-total">
+          <span class="text-headline-sm">Total Paid</span>
+          <span class="text-headline-sm" id="orderTotal">₹0</span>
+        </div>
+
+        <div class="order-shipping-block">
+          <p class="order-details-field__label mb-2">Shipping To</p>
+          <p id="orderShippingAddress" class="mb-0"></p>
+        </div>
+      </div>
+
+      <!-- ==================== ACTIONS ==================== -->
+      <div class="order-success-actions">
+        <a href="orders.html" class="btn-brand btn-brand-secondary btn-brand-block">Track Order</a>
+        <a href="shop.html" class="btn-brand btn-brand-primary btn-brand-block">Continue Shopping</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer mt-5">
+    <div class="container">
+      <div class="site-footer__bottom" style="border-top:none;">
+        <p class="site-footer__copyright">© <span id="footerYear">2025</span> Penguin's Fragrance. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/navigation.js"></script>
+
+  <!-- ==================== ORDER SUCCESS PAGE LOGIC ====================
+       Kept inline: this page only ever reads a single localStorage key
+       ("pf_last_order", written by payment.js) and paints it into the
+       DOM once. There's no reusable logic here worth extracting into
+       its own js/ file. -->
+  <script>
+    (function () {
+      "use strict";
+
+      const METHOD_LABELS_MAP = {
+        upi: "UPI",
+        card: "Card",
+        netbanking: "Net Banking",
+        wallet: "Wallet",
+        cod: "Cash on Delivery",
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        let order = null;
+        try {
+          order = JSON.parse(localStorage.getItem("pf_last_order") || "null");
+        } catch (err) {
+          order = null;
+        }
+
+        if (!order) {
+          document.getElementById("noOrderNotice").hidden = false;
+          return;
+        }
+
+        document.getElementById("orderSuccessContent").hidden = false;
+
+        document.getElementById("orderConfirmEmail").textContent = order.customer.email;
+        document.getElementById("orderNumber").textContent = order.orderNumber;
+        document.getElementById("orderDate").textContent = new Date(order.date).toLocaleDateString("en-IN", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+        document.getElementById("orderPaymentMethod").textContent =
+          METHOD_LABELS_MAP[order.paymentMethod] || order.paymentMethod;
+        document.getElementById("orderDelivery").textContent = order.estimatedDelivery;
+
+        document.getElementById("orderItemsList").innerHTML = order.items
+          .map(
+            (item) => `
+            <div class="checkout-summary-item">
+              <div class="checkout-summary-item__info">
+                <p class="checkout-summary-item__name">${item.name}</p>
+                <p class="checkout-summary-item__meta">${item.size} &times; ${item.quantity}</p>
+              </div>
+              <span class="checkout-summary-item__price">${pfFormatPrice(item.price * item.quantity)}</span>
+            </div>`
+          )
+          .join("");
+
+        document.getElementById("orderSubtotal").textContent = pfFormatPrice(order.totals.subtotal);
+
+        if (order.totals.discount > 0) {
+          document.getElementById("orderDiscountRow").hidden = false;
+          document.getElementById("orderDiscount").textContent = "−" + pfFormatPrice(order.totals.discount);
+        }
+
+        document.getElementById("orderShipping").textContent =
+          order.totals.shipping === 0 ? "Free" : pfFormatPrice(order.totals.shipping);
+        document.getElementById("orderTotal").textContent = pfFormatPrice(order.totals.total);
+
+        const addr = order.shipping;
+        document.getElementById("orderShippingAddress").textContent =
+          `${order.customer.fullName}, ${addr.address}, ${addr.city}, ${addr.state} ${addr.pincode}, ${addr.country}`;
+      });
+    })();
+  </script>
+
+</body>
+</html>

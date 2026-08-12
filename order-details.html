@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Details | Penguin's Fragrance</title>
+  <meta name="description" content="View the full details of your Penguin's Fragrance order." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/checkout.css" />
+  <link rel="stylesheet" href="css/order-success.css" />
+  <link rel="stylesheet" href="css/orders.css" />
+  <link rel="stylesheet" href="css/order-details.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header header-solid" id="siteHeader">
+    <div class="container">
+      <div class="site-header__inner">
+        <button class="btn-icon site-header__hamburger" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Open menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <nav class="site-header__nav" aria-label="Primary">
+          <a class="site-header__link" href="shop.html">Shop</a>
+          <a class="site-header__link" href="categories.html">Collections</a>
+          <a class="site-header__link" href="about.html">About</a>
+          <a class="site-header__link" href="contact.html">Contact</a>
+        </nav>
+        <a class="site-header__logo" href="index.html">Penguin's Fragrance</a>
+        <div class="site-header__actions">
+          <button class="btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchOverlay" aria-controls="searchOverlay" aria-label="Search">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+          <a class="btn-icon site-header__action-hide-mobile" href="account.html" aria-label="Account">
+            <span class="material-symbols-outlined">person</span>
+          </a>
+          <a class="btn-icon site-header__action-hide-mobile icon-badge" href="wishlist.html" aria-label="Wishlist">
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="icon-badge__count" id="wishlistCount" hidden>0</span>
+          </a>
+          <a class="btn-icon icon-badge" href="cart.html" aria-label="Shopping bag">
+            <span class="material-symbols-outlined">shopping_bag</span>
+            <span class="icon-badge__count" id="cartCount" hidden>0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="offcanvas offcanvas-start offcanvas-brand" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas-header">
+      <span class="site-header__logo" style="font-size: var(--fs-headline-sm);" id="mobileMenuLabel">Penguin's Fragrance</span>
+      <button type="button" class="btn-icon" data-bs-dismiss="offcanvas" aria-label="Close menu">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <a class="offcanvas-brand__link" href="shop.html">Shop</a>
+      <a class="offcanvas-brand__link" href="categories.html">Collections</a>
+      <a class="offcanvas-brand__link" href="about.html">About</a>
+      <a class="offcanvas-brand__link" href="contact.html">Contact</a>
+      <p class="offcanvas-brand__section-title">Account</p>
+      <a class="offcanvas-brand__link" href="account.html">My Account</a>
+      <a class="offcanvas-brand__link" href="wishlist.html">Wishlist</a>
+      <a class="offcanvas-brand__link active" href="orders.html">Track Order</a>
+      <p class="offcanvas-brand__section-title">Support</p>
+      <a class="offcanvas-brand__link" href="contact.html">Contact Us</a>
+      <a class="offcanvas-brand__link" href="faq.html">FAQ</a>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-top offcanvas-brand" tabindex="-1" id="searchOverlay" aria-labelledby="searchOverlayLabel" style="width: 100%; height: auto;">
+    <div class="offcanvas-body">
+      <div class="container py-4">
+        <div class="d-flex align-items-center gap-3">
+          <span class="material-symbols-outlined text-primary">search</span>
+          <input type="search" class="form-control-brand" id="globalSearchInput" placeholder="Search fragrances, notes, collections…" aria-label="Search products" />
+          <button type="button" class="btn-icon" data-bs-dismiss="offcanvas" aria-label="Close search">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div id="searchSuggestions" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container section-tight" style="max-width: 820px;">
+
+    <nav aria-label="Breadcrumb" class="breadcrumb-brand mb-5">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="orders.html">Orders</a>
+      <span>/</span>
+      <span class="current" id="breadcrumbOrderNumber">Order</span>
+    </nav>
+
+    <!-- ==================== NOT FOUND / NOT YOURS ==================== -->
+    <div class="order-details-not-found" id="orderNotFound" hidden>
+      <span class="material-symbols-outlined" style="font-size:48px; color:var(--outline);">receipt_long</span>
+      <h1 class="text-headline-md mt-4 mb-3">Order Not Found</h1>
+      <p class="text-secondary mb-4">We couldn't find this order on your account. Please check the link or view your full order history.</p>
+      <a href="orders.html" class="btn-brand btn-brand-primary">View Order History</a>
+    </div>
+
+    <!-- ==================== ORDER DETAILS ==================== -->
+    <div id="orderDetailsContent" hidden>
+
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-5">
+        <div>
+          <h1 class="text-headline-md mb-2" id="orderDetailsNumber">Order —</h1>
+          <p class="text-secondary" id="orderDetailsDate">—</p>
+        </div>
+        <span class="order-status-badge" id="orderDetailsStatusBadge" style="font-size:13px; padding:8px 16px;">confirmed</span>
+      </div>
+
+      <div class="order-details-card">
+
+        <!-- Status Timeline -->
+        <div class="order-timeline" id="orderTimeline">
+          <div class="order-timeline__step" data-timeline-step="confirmed">
+            <div class="order-timeline__dot"><span class="material-symbols-outlined" style="font-size:16px;">check</span></div>
+            <span class="order-timeline__label">Confirmed</span>
+          </div>
+          <div class="order-timeline__step" data-timeline-step="shipped">
+            <div class="order-timeline__dot"><span class="material-symbols-outlined" style="font-size:16px;">local_shipping</span></div>
+            <span class="order-timeline__label">Shipped</span>
+          </div>
+          <div class="order-timeline__step" data-timeline-step="out-for-delivery">
+            <div class="order-timeline__dot"><span class="material-symbols-outlined" style="font-size:16px;">directions_car</span></div>
+            <span class="order-timeline__label">Out for Delivery</span>
+          </div>
+          <div class="order-timeline__step" data-timeline-step="delivered">
+            <div class="order-timeline__dot"><span class="material-symbols-outlined" style="font-size:16px;">home</span></div>
+            <span class="order-timeline__label">Delivered</span>
+          </div>
+        </div>
+
+        <!-- Items -->
+        <div class="checkout-summary-items" id="orderDetailsItems" style="border-bottom:none; padding-bottom:0;"></div>
+
+        <!-- Totals -->
+        <div class="order-summary-row">
+          <span>Subtotal</span>
+          <span id="orderDetailsSubtotal">₹0</span>
+        </div>
+        <div class="order-summary-row order-summary-row--discount" id="orderDetailsDiscountRow" hidden>
+          <span>Discount</span>
+          <span id="orderDetailsDiscount">₹0</span>
+        </div>
+        <div class="order-summary-row">
+          <span>Shipping</span>
+          <span id="orderDetailsShipping">Free</span>
+        </div>
+        <div class="order-summary-total">
+          <span class="text-headline-sm">Total Paid</span>
+          <span class="text-headline-sm" id="orderDetailsTotal">₹0</span>
+        </div>
+
+        <!-- Shipping + Payment info -->
+        <div class="order-info-blocks">
+          <div>
+            <p class="order-info-block__label">Shipping Address</p>
+            <p class="order-info-block__value" id="orderDetailsAddress">—</p>
+          </div>
+          <div>
+            <p class="order-info-block__label">Payment Method</p>
+            <p class="order-info-block__value" id="orderDetailsPaymentMethod">—</p>
+            <p class="order-info-block__label mt-3">Estimated Delivery</p>
+            <p class="order-info-block__value" id="orderDetailsDelivery">—</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex gap-3 mt-4 flex-wrap">
+        <a href="orders.html" class="btn-brand btn-brand-secondary">Back to Orders</a>
+        <a href="contact.html" class="btn-brand btn-brand-secondary">Need Help?</a>
+        <a href="shop.html" class="btn-brand btn-brand-primary">Continue Shopping</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer mt-5">
+    <div class="container">
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">© <span id="footerYear">2025</span> Penguin's Fragrance. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- ==================== ORDER DETAILS PAGE LOGIC ====================
+       Guarded by requireAuth() + an ownership check (the order's email
+       must match the logged-in user's email) so one signed-in user
+       can't view another's order by guessing an order number in the
+       URL. Kept inline: single-page rendering logic, no reuse value. -->
+  <script>
+    (function () {
+      "use strict";
+
+      const TIMELINE_STEPS = ["confirmed", "shipped", "out-for-delivery", "delivered"];
+      const PAYMENT_METHOD_LABELS = {
+        upi: "UPI",
+        card: "Credit / Debit Card",
+        netbanking: "Net Banking",
+        wallet: "Wallet",
+        cod: "Cash on Delivery",
+      };
+
+      function renderTimeline(status) {
+        // Demo-only: every order is currently generated with status
+        // "confirmed" (see payment.js). Only that step will ever show
+        // as complete until a real order-status backend exists — this
+        // intentionally does NOT fabricate shipped/delivered progress.
+        const currentIndex = TIMELINE_STEPS.indexOf(status);
+
+        document.querySelectorAll("[data-timeline-step]").forEach((step, index) => {
+          step.classList.toggle("complete", currentIndex >= 0 && index <= currentIndex);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const user = requireAuth();
+        if (!user) return;
+
+        const orderNumber = new URLSearchParams(window.location.search).get("order");
+        const allOrders = JSON.parse(localStorage.getItem("pf_orders") || "[]");
+        const order = allOrders.find(
+          (o) => o.orderNumber === orderNumber && o.customer && o.customer.email === user.email
+        );
+
+        if (!order) {
+          document.getElementById("orderNotFound").hidden = false;
+          return;
+        }
+
+        document.getElementById("orderDetailsContent").hidden = false;
+
+        document.title = `${order.orderNumber} | Penguin's Fragrance`;
+        document.getElementById("breadcrumbOrderNumber").textContent = order.orderNumber;
+        document.getElementById("orderDetailsNumber").textContent = `Order ${order.orderNumber}`;
+        document.getElementById("orderDetailsDate").textContent = new Date(order.date).toLocaleDateString("en-IN", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+        document.getElementById("orderDetailsStatusBadge").textContent = order.status;
+
+        renderTimeline(order.status);
+
+        document.getElementById("orderDetailsItems").innerHTML = order.items
+          .map((item) => {
+            const product = pfGetProductById(item.productId);
+            return `
+              <div class="checkout-summary-item">
+                <div class="checkout-summary-item__media">
+                  <img src="${product ? product.thumbnail : ""}" alt="${item.name}" />
+                </div>
+                <div class="checkout-summary-item__info">
+                  <p class="checkout-summary-item__name">${item.name}</p>
+                  <p class="checkout-summary-item__meta">${item.size} &times; ${item.quantity}</p>
+                </div>
+                <span class="checkout-summary-item__price">${pfFormatPrice(item.price * item.quantity)}</span>
+              </div>`;
+          })
+          .join("");
+
+        document.getElementById("orderDetailsSubtotal").textContent = pfFormatPrice(order.totals.subtotal);
+        if (order.totals.discount > 0) {
+          document.getElementById("orderDetailsDiscountRow").hidden = false;
+          document.getElementById("orderDetailsDiscount").textContent = "−" + pfFormatPrice(order.totals.discount);
+        }
+        document.getElementById("orderDetailsShipping").textContent =
+          order.totals.shipping === 0 ? "Free" : pfFormatPrice(order.totals.shipping);
+        document.getElementById("orderDetailsTotal").textContent = pfFormatPrice(order.totals.total);
+
+        const addr = order.shipping;
+        document.getElementById("orderDetailsAddress").textContent =
+          `${order.customer.fullName}, ${addr.address}, ${addr.city}, ${addr.state} ${addr.pincode}, ${addr.country}`;
+        document.getElementById("orderDetailsPaymentMethod").textContent =
+          PAYMENT_METHOD_LABELS[order.paymentMethod] || order.paymentMethod;
+        document.getElementById("orderDetailsDelivery").textContent = order.estimatedDelivery;
+      });
+    })();
+  </script>
+
+</body>
+</html>

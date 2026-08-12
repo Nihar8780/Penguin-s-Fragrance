@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment | Penguin's Fragrance</title>
+  <meta name="description" content="Complete your payment securely at Penguin's Fragrance." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="css/checkout.css" />
+  <link rel="stylesheet" href="css/payment.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- ==================== HEADER (stripped down, same as checkout) ==================== -->
+  <header class="site-header header-solid" id="siteHeader">
+    <div class="container">
+      <div class="site-header__inner">
+        <a class="site-header__logo mx-auto" href="index.html" style="position:static; transform:none;">Penguin's Fragrance</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section-tight">
+
+    <!-- ==================== STEP INDICATOR ==================== -->
+    <div class="checkout-steps">
+      <div class="checkout-step complete">
+        <span class="checkout-step__dot"><span class="material-symbols-outlined" style="font-size:14px;">check</span></span>
+        Cart
+      </div>
+      <div class="checkout-step__divider"></div>
+      <div class="checkout-step complete">
+        <span class="checkout-step__dot"><span class="material-symbols-outlined" style="font-size:14px;">check</span></span>
+        Checkout
+      </div>
+      <div class="checkout-step__divider"></div>
+      <div class="checkout-step active">
+        <span class="checkout-step__dot">3</span>
+        Payment
+      </div>
+      <div class="checkout-step__divider"></div>
+      <div class="checkout-step">
+        <span class="checkout-step__dot">4</span>
+        Confirmation
+      </div>
+    </div>
+
+    <!-- ==================== EMPTY / MISSING CHECKOUT DATA NOTICE ==================== -->
+    <div class="empty-state" id="paymentEmptyNotice" hidden>
+      <span class="material-symbols-outlined">error</span>
+      <h2>Nothing to pay for yet</h2>
+      <p>Please complete the checkout details before proceeding to payment.</p>
+      <a href="checkout.html" class="btn-brand btn-brand-primary">Go to Checkout</a>
+    </div>
+
+    <div class="row g-4" id="paymentFormSection">
+
+      <!-- ==================== PAYMENT METHODS COLUMN ==================== -->
+      <div class="col-12 col-lg-7">
+
+        <div class="demo-payment-notice">
+          <span class="material-symbols-outlined">info</span>
+          <p>
+            UPI, Card, Net Banking, and Wallet open a real Razorpay checkout in <strong>Test Mode</strong> — no real money moves, but the payment flow itself is genuine. Use Razorpay's published test card/UPI details to complete a payment. Cash on Delivery is simulated, as it would be in real life too.
+          </p>
+        </div>
+
+        <section class="checkout-section">
+          <div class="checkout-section__title">
+            <span class="checkout-section__number">1</span>
+            <h2 class="text-headline-sm">Choose Payment Method</h2>
+          </div>
+
+          <div class="payment-method-grid">
+            <div class="payment-method-option selected" data-payment-method="upi">
+              <span class="material-symbols-outlined">qr_code_2</span>
+              <span class="payment-method-option__label">UPI</span>
+            </div>
+            <div class="payment-method-option" data-payment-method="card">
+              <span class="material-symbols-outlined">credit_card</span>
+              <span class="payment-method-option__label">Card</span>
+            </div>
+            <div class="payment-method-option" data-payment-method="netbanking">
+              <span class="material-symbols-outlined">account_balance</span>
+              <span class="payment-method-option__label">Net Banking</span>
+            </div>
+            <div class="payment-method-option" data-payment-method="wallet">
+              <span class="material-symbols-outlined">account_balance_wallet</span>
+              <span class="payment-method-option__label">Wallet</span>
+            </div>
+            <div class="payment-method-option" data-payment-method="cod">
+              <span class="material-symbols-outlined">local_shipping</span>
+              <span class="payment-method-option__label">Cash on Delivery</span>
+            </div>
+          </div>
+
+          <!-- UPI sub-form -->
+          <div class="payment-subform active" data-payment-subform="upi">
+            <div class="form-field">
+              <label class="form-label-brand" for="upiId">UPI ID</label>
+              <input type="text" id="upiId" class="form-control-brand" placeholder="yourname@bank" />
+            </div>
+          </div>
+
+          <!-- Card sub-form -->
+          <div class="payment-subform" data-payment-subform="card">
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label-brand" for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" class="form-control-brand card-number-input" placeholder="0000 0000 0000 0000" inputmode="numeric" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label-brand" for="cardName">Name on Card</label>
+                <input type="text" id="cardName" class="form-control-brand" />
+              </div>
+            </div>
+            <div class="form-row form-row--2col">
+              <div class="form-field">
+                <label class="form-label-brand" for="cardExpiry">Expiry (MM/YY)</label>
+                <input type="text" id="cardExpiry" class="form-control-brand" placeholder="MM/YY" inputmode="numeric" />
+              </div>
+              <div class="form-field">
+                <label class="form-label-brand" for="cardCvv">CVV</label>
+                <input type="password" id="cardCvv" class="form-control-brand" maxlength="4" inputmode="numeric" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Net Banking sub-form -->
+          <div class="payment-subform" data-payment-subform="netbanking">
+            <div class="form-field">
+              <label class="form-label-brand" for="netbankingSelect">Select Bank</label>
+              <select id="netbankingSelect" class="form-select-brand">
+                <option value="">Choose your bank</option>
+                <option value="sbi">State Bank of India</option>
+                <option value="hdfc">HDFC Bank</option>
+                <option value="icici">ICICI Bank</option>
+                <option value="axis">Axis Bank</option>
+                <option value="kotak">Kotak Mahindra Bank</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Wallet sub-form -->
+          <div class="payment-subform" data-payment-subform="wallet">
+            <div class="form-field">
+              <label class="form-label-brand" for="walletSelect">Select Wallet</label>
+              <select id="walletSelect" class="form-select-brand">
+                <option value="">Choose a wallet</option>
+                <option value="paytm">Paytm</option>
+                <option value="phonepe">PhonePe</option>
+                <option value="amazonpay">Amazon Pay</option>
+                <option value="mobikwik">MobiKwik</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- COD sub-form -->
+          <div class="payment-subform" data-payment-subform="cod">
+            <div class="cod-note">
+              <span class="material-symbols-outlined">payments</span>
+              <p class="text-body-md text-secondary mb-0">Pay in cash when your order is delivered. A small COD handling fee may apply on final delivery.</p>
+            </div>
+          </div>
+        </section>
+
+        <button type="button" class="btn-brand btn-brand-primary btn-brand-block btn-place-order d-lg-none" id="placeOrderBtnMobile" onclick="processDemoPayment()">
+          <span class="spinner-brand"></span>
+          <span class="btn-place-order__label">Place Order</span>
+        </button>
+      </div>
+
+      <!-- ==================== ORDER SUMMARY COLUMN ==================== -->
+      <div class="col-12 col-lg-5">
+        <div class="order-summary-card">
+          <h3 class="text-headline-sm order-summary-card__title">Order Summary</h3>
+
+          <div class="checkout-summary-items" id="paymentSummaryItems"></div>
+
+          <div class="order-summary-row">
+            <span>Subtotal</span>
+            <span id="paymentSubtotal">₹0</span>
+          </div>
+          <div class="order-summary-row order-summary-row--discount" id="paymentDiscountRow" hidden>
+            <span>Discount</span>
+            <span id="paymentDiscount">₹0</span>
+          </div>
+          <div class="order-summary-row">
+            <span>Shipping</span>
+            <span id="paymentShipping">Free</span>
+          </div>
+
+          <div class="order-summary-total">
+            <span class="text-headline-sm">Total</span>
+            <span class="text-headline-sm" id="paymentTotal">₹0</span>
+          </div>
+
+          <button type="button" class="btn-brand btn-brand-primary btn-brand-block btn-place-order d-none d-lg-flex" id="placeOrderBtn">
+            <span class="spinner-brand"></span>
+            <span class="btn-place-order__label">Place Order</span>
+          </button>
+          <p class="text-center coupon-hint mt-3 mb-0">
+            <span class="material-symbols-outlined" style="font-size:14px; vertical-align:middle;">lock</span>
+            Secure demo checkout
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5">
+    <div class="container">
+      <div class="site-footer__bottom" style="border-top:none;">
+        <p class="site-footer__copyright">© <span id="footerYear">2025</span> Penguin's Fragrance. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Razorpay Checkout (TEST MODE) — opens the real Razorpay payment widget.
+       See js/payment.js for the Key ID configuration. -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/payment.js"></script>
+
+  <script src="js/animations.js"></script>
+</body>
+</html>

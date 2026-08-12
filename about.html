@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story | Penguin's Fragrance</title>
+  <meta name="description" content="The story, philosophy, and craftsmanship behind Penguin's Fragrance — a premium minimal luxury perfume house." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header header-solid" id="siteHeader">
+    <div class="container">
+      <div class="site-header__inner">
+        <button class="btn-icon site-header__hamburger" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Open menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <nav class="site-header__nav" aria-label="Primary">
+          <a class="site-header__link" href="shop.html">Shop</a>
+          <a class="site-header__link" href="categories.html">Collections</a>
+          <a class="site-header__link active" href="about.html">About</a>
+          <a class="site-header__link" href="contact.html">Contact</a>
+        </nav>
+        <a class="site-header__logo" href="index.html">Penguin's Fragrance</a>
+        <div class="site-header__actions">
+          <button class="btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchOverlay" aria-controls="searchOverlay" aria-label="Search">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+          <a class="btn-icon site-header__action-hide-mobile" href="login.html" aria-label="Account">
+            <span class="material-symbols-outlined">person</span>
+          </a>
+          <a class="btn-icon site-header__action-hide-mobile icon-badge" href="wishlist.html" aria-label="Wishlist">
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="icon-badge__count" id="wishlistCount" hidden>0</span>
+          </a>
+          <a class="btn-icon icon-badge" href="cart.html" aria-label="Shopping bag">
+            <span class="material-symbols-outlined">shopping_bag</span>
+            <span class="icon-badge__count" id="cartCount" hidden>0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="offcanvas offcanvas-start offcanvas-brand" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas-header">
+      <span class="site-header__logo" style="font-size: var(--fs-headline-sm);" id="mobileMenuLabel">Penguin's Fragrance</span>
+      <button type="button" class="btn-icon" data-bs-dismiss="offcanvas" aria-label="Close menu">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <a class="offcanvas-brand__link" href="shop.html">Shop</a>
+      <a class="offcanvas-brand__link" href="categories.html">Collections</a>
+      <a class="offcanvas-brand__link active" href="about.html">About</a>
+      <a class="offcanvas-brand__link" href="contact.html">Contact</a>
+      <p class="offcanvas-brand__section-title">Account</p>
+      <a class="offcanvas-brand__link" href="login.html">Sign In</a>
+      <a class="offcanvas-brand__link" href="wishlist.html">Wishlist</a>
+      <a class="offcanvas-brand__link" href="orders.html">Track Order</a>
+      <p class="offcanvas-brand__section-title">Support</p>
+      <a class="offcanvas-brand__link" href="contact.html">Contact Us</a>
+      <a class="offcanvas-brand__link" href="faq.html">FAQ</a>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-top offcanvas-brand" tabindex="-1" id="searchOverlay" aria-labelledby="searchOverlayLabel" style="width: 100%; height: auto;">
+    <div class="offcanvas-body">
+      <div class="container py-4">
+        <div class="d-flex align-items-center gap-3">
+          <span class="material-symbols-outlined text-primary">search</span>
+          <input type="search" class="form-control-brand" id="globalSearchInput" placeholder="Search fragrances, notes, collections…" aria-label="Search products" />
+          <button type="button" class="btn-icon" data-bs-dismiss="offcanvas" aria-label="Close search">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div id="searchSuggestions" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ==================== STORY HERO ==================== -->
+    <section class="hero" style="height:70vh; min-height:480px;">
+      <div class="hero__media">
+        <img
+          src="assets/Gemini_Generated_Image_2thqqo2thqqo2thq.png"
+          alt="A black perfume bottle beside a blooming white rose and dark oud wood on a concrete plinth"
+        />
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <span class="hero__eyebrow">Our Story</span>
+        <h1 class="hero__title">Crafted in Silence, Worn with Intent</h1>
+      </div>
+    </section>
+
+    <!-- ==================== BRAND NARRATIVE ==================== -->
+    <section class="section">
+      <div class="container" style="max-width: 760px;">
+        <h2>OUR JOURNEY</h2><BR><BR>
+        <p class="text-body-lg text-secondary mb-4">
+          Penguin's Fragrance was founded on a simple belief: that scent is the quietest, most personal form of self-expression. In a market crowded with noise, we chose restraint — architectural compositions built from rare absolutes, honest materials, and an unwavering attention to balance.
+        </p>
+        <p class="text-body-lg text-secondary mb-4">
+          Every fragrance in our collection begins the same way — not with a marketing brief, but with a mood. A texture. A memory of light falling across stone, or the particular quiet of a room just after rain. From there, our perfumers translate feeling into formula, refining each composition for months before it ever reaches a bottle.
+        </p>
+        <p class="text-body-lg text-secondary">
+          We are not interested in trends. We are interested in scents that still feel considered a decade from now — the kind you return to not because they're new, but because they're yours.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== INGREDIENTS ==================== -->
+    <section class="section" id="ingredients" style="background-color: var(--surface-container-lowest); scroll-margin-top: 100px;">
+      <div class="container">
+        <div class="editorial-banner">
+          <div class="editorial-banner__media">
+            <img
+              src="assets/About page 2nd image.png"
+              alt="Close-up detail of a textured silver perfume bottle cap"
+              loading="lazy"
+            />
+          </div>
+          <div class="editorial-banner__content">
+            <span class="editorial-banner__eyebrow">Ingredients</span>
+            <h2 class="text-headline-md editorial-banner__title">Sourced with Intention</h2>
+            <p class="editorial-banner__text">
+              We work directly with a small number of growers and distillers who share our standards — traceable sandalwood, ethically harvested oud, and absolutes extracted without unnecessary waste. Every ingredient list on our product pages is complete and unedited; nothing is hidden behind "parfum" alone.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SUSTAINABILITY ==================== -->
+    <section class="section" id="sustainability" style="scroll-margin-top: 100px;">
+      <div class="container" style="max-width: 760px;" >
+        <h2 class="text-headline-md text-center mb-5">Sustainability</h2>
+        <div class="row g-4 text-center">
+          <div class="col-12 col-md-4">
+            <span class="material-symbols-outlined" style="font-size:32px; color:var(--primary);">recycling</span>
+            <h3 class="text-headline-sm mt-3 mb-2" style="font-size:18px;">Refillable Bottles</h3>
+            <p class="text-secondary text-body-md">Every bottle is designed for refill, reducing glass waste across repeat purchases.</p>
+          </div>
+          <div class="col-12 col-md-4">
+            <span class="material-symbols-outlined" style="font-size:32px; color:var(--primary);">eco</span>
+            <h3 class="text-headline-sm mt-3 mb-2" style="font-size:18px;">Responsible Sourcing</h3>
+            <p class="text-secondary text-body-md">We partner only with suppliers who meet independently verified ethical harvesting standards.</p>
+          </div>
+          <div class="col-12 col-md-4">
+            <span class="material-symbols-outlined" style="font-size:32px; color:var(--primary);">inventory_2</span>
+            <h3 class="text-headline-sm mt-3 mb-2" style="font-size:18px;">Minimal Packaging</h3>
+            <p class="text-secondary text-body-md">Recyclable, plastic-free packaging with no unnecessary inserts or overwrap.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="section text-center" style="background-color: var(--surface-container-lowest); padding-top: 80px; padding-bottom: 80px;">
+      <div class="container">
+        <h2 class="text-headline-md mb-4">Find Your Signature Scent</h2>
+        <a href="shop.html" class="btn-brand btn-brand-primary">Shop the Collection</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="index.html">Penguin's Fragrance</a>
+          <p class="site-footer__tagline">Elevating the everyday through minimal, architectural scent compositions.</p>
+          <form class="site-footer__newsletter" id="newsletterForm" novalidate>
+            <label for="newsletterEmail" class="visually-hidden">Email address</label>
+            <input type="email" id="newsletterEmail" class="form-control-brand" placeholder="Your email address" required />
+            <button type="submit" class="btn-brand btn-brand-primary">Join</button>
+          </form>
+        </div>
+        <div>
+          <span class="site-footer__col-title">Shop</span>
+          <nav class="site-footer__links" aria-label="Shop">
+            <a class="site-footer__link" href="shop.html">All Fragrances</a>
+            <a class="site-footer__link" href="categories.html">Collections</a>
+            <a class="site-footer__link" href="offers.html">Offers</a>
+            <a class="site-footer__link" href="shop.html?size=30ml">Travel Sizes</a>
+          </nav>
+        </div>
+        <div>
+          <span class="site-footer__col-title">Service</span>
+          <nav class="site-footer__links" aria-label="Service">
+            <a class="site-footer__link" href="contact.html">Contact Us</a>
+            <a class="site-footer__link" href="faq.html">Shipping &amp; Returns</a>
+            <a class="site-footer__link" href="faq.html">FAQ</a>
+            <a class="site-footer__link" href="orders.html">Track Order</a>
+          </nav>
+        </div>
+        <div>
+          <span class="site-footer__col-title">Brand</span>
+          <nav class="site-footer__links" aria-label="Brand">
+            <a class="site-footer__link" href="about.html">Our Story</a>
+            <a class="site-footer__link" href="about.html#ingredients">Ingredients</a>
+            <a class="site-footer__link" href="about.html#sustainability">Sustainability</a>
+            <a class="site-footer__link" href="contact.html">Stockists</a>
+          </nav>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">© <span id="footerYear">2025</span> Penguin's Fragrance. All rights reserved.</p>
+        
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
